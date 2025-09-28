@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "pagina inicial";
+}
+
+<div class="container my-5 d-flex justify-content-center">
+  <div class="wrapper" style="max-width: 600px; width: 100%;">
+
+    <article class="post-entry shadow rounded bg-white border">
+
+        <!-- Cabeçalho: perfil + data -->
+        <header class="d-flex align-items-center p-3">
+            <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-rose" style="width:48px; height:48px;">
+                <img src="~/assets/perfil.jpg"
+                     alt="Foto de perfil de maria julia" loading="lazy" class="w-100 h-100 object-fit-cover">
+            </div>
+            <div>
+                <h2 class="h5 mb-0">Maria Julia</h2>
+                <time class="text-muted small">28 de Setembro de 2025</time>
+            </div>
+        </header>
+
+        <!-- Imagem do post -->
+            <div style="height: 500px; background-color: #f9f9f9;">
+                <img src="~/assets/post1.jpg"
+                     alt="Foto do post"
+                     class="img-fluid w-100 h-100"
+                     style="object-fit: contain;"
+                     loading="lazy">
+            </div>
+
+    </article>
+
+    <!-- Aqui fora do article, mas dentro do wrapper que tem a mesma largura -->
+    <div class="d-flex align-items-center px-3 pt-3 pb-1">
+        <button type="button" class="btn btn-link text-danger me-3 p-0 fs-4" aria-label="Curtir">
+            <i class="bi bi-heart"></i>
+        </button>
+        <button type="button" class="btn btn-link text-secondary p-0 fs-4" aria-label="Comentar">
+            <i class="bi bi-chat"></i>
+        </button>
+    </div>
+
+    <section class="px-3 pb-4">
+        <p class="mb-1">
+            <strong>Maria Julia</strong> autocuidado é um gesto de amor ✨🌷.
+            Reserve um momento só seu hoje.
+            <span class="text-muted">#amorpróprio #beleza #flores</span>
+        </p>
+        <a href="#" class="text-decoration-none small text-secondary">Ver todos os 12 comentários</a>
+    </section>
+
+  </div>
+</div>

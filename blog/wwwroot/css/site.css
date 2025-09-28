@@ -1,0 +1,668 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+:root {
+    --rosa-claro: #F9CEDF; /* Rosa bebê suave */
+    --rosa-vivo: #FF85A1; /* Rosa vibrante (mantida, mas suavizada) */
+    --rosa-medio: #E8B7D4; /* Rosa médio elegante */
+    --roxo-claro: #D6C8F2; /* Lavanda clara */
+    --roxo-vivo: #B49BE5; /* Roxo moderno e vivo */
+    --fundo-claro: #FDF9FC; /* Fundo muito claro com leve toque lilás */
+    --texto-escuro: #2E2E2E; /* Texto escuro mais suave */
+    --grad-rosa-roxo: linear-gradient(135deg, #FF85A1 0%, #B49BE5 100%);
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto-escuro);
+    margin-bottom: 60px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background: var(--grad-rosa-roxo);
+    padding: 1.5rem 0;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+    .nav-link:hover {
+        color: var(--roxo-claro) !important;
+    }
+
+/* Post Card */
+.post-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    margin-bottom: 4rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+    }
+
+    .post-card img.bg-post {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+
+    .post-card .overlay-title,
+    .overlay-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        color: white;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+@media (max-width: 768px) {
+    .overlay-title {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+}
+
+/* Post Entry */
+.post-entry {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+    max-width: 600px;
+    margin: auto;
+}
+
+    .post-entry:hover {
+        box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+        transform: translateY(-6px);
+    }
+
+/* Profile Pic */
+.profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+    border: 2px solid var(--rosa-claro);
+}
+
+@media (max-width: 768px) {
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.8rem;
+    }
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--rosa-claro);
+}
+
+/* Author and Date */
+.author-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+
+/* Post Image */
+.post-image {
+    max-height: 350px;
+}
+
+    .post-image img,
+    .post-image img.post-main-img,
+    .post-main-img {
+        width: 100%;
+        max-height: 550px;
+        object-fit: cover;
+        display: block;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem 0;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+    .btn-icon:hover {
+        color: var(--rosa-claro);
+    }
+
+/* Post Caption, Hashtags, Comments */
+.post-caption {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.hashtags {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.view-comments {
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.3rem;
+    color: #888;
+}
+
+/* Footer */
+footer {
+    background-color: var(--roxo-vivo);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+    footer p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+.social-icons a {
+    color: white;
+    margin: 0 0.7rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+    .social-icons a:hover {
+        color: var(--rosa-claro);
+    }
+
+/* Buttons */
+.btn-read {
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    background: var(--rosa-vivo);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+    .btn-read:hover {
+        background: var(--roxo-claro);
+        transform: scale(1.05);
+    }
+
+@media (max-width: 768px) {
+    .btn-read {
+        margin: 0 1rem 1rem 1rem;
+        width: fit-content;
+    }
+}
+
+/* Focus Styles */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.footer-fixo {
+    margin-top: 2rem;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: var(--roxo-vivo); /* ou qualquer cor que você quiser */
+    color: white;
+    text-align: center;
+    padding: 1.2rem 0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Para garantir que o body não fique escondido atrás do navbar fixo */
+body {
+    padding-top: 70px; /* ajuste conforme a altura do navbar */
+}
+
+.header-hero {
+    background-image: url('sua-imagem-de-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    min-height: 300px;
+    position: relative;
+}
+
+    /* Máscara escura para contraste do texto */
+    .header-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .header-hero > .container {
+        position: relative;
+        z-index: 1;
+    }
+
+/* Transição e mudança de estilo ao fazer scroll */
+.navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .navbar.scrolled {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+/* Ajustes responsivos menores */
+@media (max-width: 767px) {
+    .header-hero {
+        height: 40vh;
+    }
+
+        .header-hero h1 {
+            font-size: 1.75rem;
+        }
+
+        .header-hero p.lead {
+            font-size: 1rem;
+        }
+}
+
+/* =========================================
+   HEADER + NAVBAR MODERNO E RESPONSIVO
+   ========================================= */
+header {
+    background: var(--grad-rosa-roxo);
+    padding: 1rem 0;
+    position: relative;
+    z-index: 999;
+}
+
+/* Marca (logo/nome do blog) */
+.navbar-brand {
+    color: #fff !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+    }
+
+/* Links do menu */
+.nav-link {
+    color: #fff !important;
+    margin-left: 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+    /* Efeito underline animado */
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background: #fff;
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+/* Botão do menu (mobile) */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Efeito ao rolar a página */
+.navbar {
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+    .navbar.scrolled {
+        background: #fff !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        padding: 0.6rem 0;
+    }
+
+        .navbar.scrolled .nav-link {
+            color: var(--texto-escuro) !important;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            color: var(--rosa-vivo) !important;
+        }
+
+/* Hero abaixo do header */
+.header-hero {
+    background-image: url('sua-imagem-de-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 65vh;
+    min-height: 320px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+    /* Overlay */
+    .header-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    /* Conteúdo centralizado */
+    .header-hero .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        animation: fadeDown 1s ease forwards;
+    }
+
+    .header-hero p {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        animation: fadeUp 1.2s ease forwards;
+    }
+
+    /* Botão no hero */
+    .header-hero .btn-hero {
+        background: var(--rosa-vivo);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+        .header-hero .btn-hero:hover {
+            background: var(--roxo-vivo);
+            transform: scale(1.05);
+        }
+
+/* Animações */
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .nav-link {
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-hero {
+        height: 50vh;
+    }
+
+        .header-hero h1 {
+            font-size: 2rem;
+        }
+
+        .header-hero p {
+            font-size: 1rem;
+        }
+}
+
+/* ===========================
+   NAVBAR
+   =========================== */
+.custom-navbar {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+    .custom-navbar .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .custom-navbar .nav-link {
+        font-weight: 500;
+        margin-left: 1rem;
+        color: #444;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+        .custom-navbar .nav-link.active,
+        .custom-navbar .nav-link:hover {
+            color: #e75480; /* rosa elegante */
+        }
+
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2px;
+            background: #e75480;
+            transition: width 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover::after,
+        .custom-navbar .nav-link.active::after {
+            width: 100%;
+        }
+
+    .custom-navbar .btn {
+        border-radius: 25px;
+        font-weight: 600;
+        padding: 0.5rem 1.2rem;
+    }
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+    height: 55vh;
+    background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+    position: relative;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero .container {
+        position: relative;
+        z-index: 2;
+    }
+
+/* Título */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+    animation: fadeDown 1s ease forwards;
+}
+
+/* Subtítulo */
+.hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+/* Animações */
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        height: 45vh;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+}

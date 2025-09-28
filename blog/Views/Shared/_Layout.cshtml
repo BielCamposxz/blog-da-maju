@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - blog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/blog.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-flower1"></i> Blog da Maju
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                    </ul>
+                    <a href="#" class="btn btn-primary ms-lg-3">Assine</a>
+                </div>
+            </div>
+        </nav>
+        <section class="hero d-flex align-items-center text-center">
+            <div class="container">
+                <h1 class="hero-title">✨ Blog da Maju ✨</h1>
+                <p class="hero-subtitle">Dicas, inspirações e histórias feitas com carinho.</p>
+            </div>
+        </section>
+
+       
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-fixo">
+        <div class="container">
+            <p>Me siga nas redes:</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/seuusuario" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.facebook.com/seuusuario" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.pinterest.com/seuusuario" target="_blank"><i class="bi bi-pinterest"></i></a>
+                <a href="https://www.twitter.com/seuusuario" target="_blank"><i class="bi bi-twitter"></i></a>
+            </div>
+            <p>Blog da Maju. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
