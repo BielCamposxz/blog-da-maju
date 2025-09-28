@@ -31,3 +31,4 @@ C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\refin
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\blog.pdb
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\blog.genruntimeconfig.cache
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\ref\blog.dll
+C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\blog.sourcelink.json

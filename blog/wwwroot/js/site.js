@@ -6,3 +6,38 @@
         navbar.classList.remove('scrolled');
     }
 });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const navbar = document.getElementById("scrollNavbar");
+    const heroHeight = document.querySelector(".hero-refined").offsetHeight;
+
+    // Navbar inicia invisível
+    navbar.style.opacity = 0;
+    navbar.style.transition = "opacity 0.4s";
+
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > heroHeight - 80) { // 80px para ajustar altura do navbar
+        navbar.style.opacity = 1;
+    navbar.classList.add("bg-white", "shadow");
+        } else {
+        navbar.style.opacity = 0;
+    navbar.classList.remove("bg-white", "shadow");
+        }
+    });
+});
+
+document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const offset = 80; // ajuste conforme altura da navbar
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const targetRect = target.getBoundingClientRect().top;
+        const targetPosition = targetRect - bodyRect - offset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    });
+});

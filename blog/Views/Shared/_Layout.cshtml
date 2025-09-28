@@ -14,35 +14,37 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <header id="inicio">
+        <!-- Navbar que aparece só ao rolar -->
+        <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="scrollNavbar">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <i class="bi bi-flower1"></i> Blog da Maju
+                <a class="navbar-brand fw-bold" href="#">
+                    <i class="bi bi-flower1 me-2"></i> Blog da Maju
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span><i class="bi bi-list"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                     </ul>
-                    <a href="#" class="btn btn-primary ms-lg-3">Assine</a>
                 </div>
             </div>
         </nav>
-        <section class="hero d-flex align-items-center text-center">
-            <div class="container">
-                <h1 class="hero-title">✨ Blog da Maju ✨</h1>
-                <p class="hero-subtitle">Dicas, inspirações e histórias feitas com carinho.</p>
+
+        <!-- Hero full-screen -->
+        <section class="hero-refined d-flex align-items-center text-center vh-100 position-relative">
+            <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+            <div class="container position-relative">
+                <h1 class="refined-title fade-in">🌸 Blog da Maju 🌸</h1>
+                <p class="refined-subtitle fade-in delay">Beleza, inspiração e delicadeza em cada detalhe.</p>
             </div>
         </section>
-
-       
     </header>
+
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -50,18 +52,26 @@
         </main>
     </div>
 
-    <footer class="footer-fixo">
+    <footer class="footer-modern-simple" id="contato">
         <div class="container">
-            <p>Me siga nas redes:</p>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/seuusuario" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.facebook.com/seuusuario" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.pinterest.com/seuusuario" target="_blank"><i class="bi bi-pinterest"></i></a>
-                <a href="https://www.twitter.com/seuusuario" target="_blank"><i class="bi bi-twitter"></i></a>
+            <h2 class="footer-brand">🌸 Blog da Maju 🌸</h2>
+            <p class="footer-subtitle">Beleza, inspiração e delicadeza em cada detalhe.</p>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/majusequim/" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@@majusequim_/"
+                   target="_blank">
+                    <i class="bi bi-tiktok fs-4 text-primary"></i>
+                </a>
+                <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
             </div>
-            <p>Blog da Maju. Todos os direitos reservados.</p>
+
+            <div class="footer-bottom">
+                <p>© Blog da Maju — developed by gabriel</p>
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

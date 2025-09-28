@@ -11,16 +11,15 @@ html {
 }
 
 :root {
-    --rosa-claro: #F9CEDF; /* Rosa bebê suave */
-    --rosa-vivo: #FF85A1; /* Rosa vibrante (mantida, mas suavizada) */
-    --rosa-medio: #E8B7D4; /* Rosa médio elegante */
-    --roxo-claro: #D6C8F2; /* Lavanda clara */
-    --roxo-vivo: #B49BE5; /* Roxo moderno e vivo */
-    --fundo-claro: #FDF9FC; /* Fundo muito claro com leve toque lilás */
-    --texto-escuro: #2E2E2E; /* Texto escuro mais suave */
+    --rosa-claro: #F9CEDF;
+    --rosa-vivo: #FF85A1;
+    --rosa-medio: #E8B7D4;
+    --roxo-claro: #D6C8F2;
+    --roxo-vivo: #B49BE5;
+    --fundo-claro: #FDF9FC;
+    --texto-escuro: #2E2E2E;
     --grad-rosa-roxo: linear-gradient(135deg, #FF85A1 0%, #B49BE5 100%);
 }
-
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -32,6 +31,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--texto-escuro);
     margin-bottom: 60px;
+    padding-top: 70px; /* ajuste conforme a altura do navbar */
 }
 
 a {
@@ -41,26 +41,85 @@ a {
 /* Header */
 header {
     background: var(--grad-rosa-roxo);
-    padding: 1.5rem 0;
+    padding: 1rem 0;
+    position: relative;
 }
 
+/* Marca (logo/nome do blog) */
 .navbar-brand {
-    color: white !important;
+    color: #fff !important;
     font-family: 'Playfair Display', serif;
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
 }
 
+    .navbar-brand:hover {
+        transform: scale(1.05);
+    }
+
+/* Links do menu */
 .nav-link {
-    color: white !important;
+    color: #fff !important;
     margin-left: 1rem;
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
 }
+
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background: #fff;
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
 
     .nav-link:hover {
         color: var(--roxo-claro) !important;
     }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+/* Botão do menu (mobile) */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Efeito ao rolar a página */
+.navbar {
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+    .navbar.scrolled {
+        background: #fff !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        padding: 0.6rem 0;
+    }
+
+        .navbar.scrolled .nav-link {
+            color: var(--texto-escuro) !important;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            color: var(--rosa-vivo) !important;
+        }
 
 /* Post Card */
 .post-card {
@@ -220,6 +279,9 @@ header {
 
 /* Footer */
 footer {
+    border-radius: 0 !important;
+    position: absolute;
+    width: 100%;
     background-color: var(--roxo-vivo);
     color: white;
     padding: 2rem 0;
@@ -271,398 +333,306 @@ footer {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Footer fixo */
 .footer-fixo {
     margin-top: 2rem;
     position: absolute;
     left: 0;
     width: 100%;
-    background-color: var(--roxo-vivo); /* ou qualquer cor que você quiser */
+    background-color: var(--roxo-vivo);
     color: white;
     text-align: center;
     padding: 1.2rem 0;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Para garantir que o body não fique escondido atrás do navbar fixo */
-body {
-    padding-top: 70px; /* ajuste conforme a altura do navbar */
-}
-
-.header-hero {
-    background-image: url('sua-imagem-de-fundo.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    min-height: 300px;
+/* HERO REFINADO */
+.hero-refined {
     position: relative;
+    height: 50vh;
+    min-height: 280px;
+    max-height: 400px;
+    background: var(--grad-rosa-roxo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
 }
 
-    /* Máscara escura para contraste do texto */
-    .header-hero::before {
-        content: "";
+    .hero-refined .overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        inset: 0;
+        background: linear-gradient( to bottom right, rgba(249, 206, 223, 0.5), rgba(180, 155, 229, 0.6) );
+        backdrop-filter: blur(3px);
     }
 
-    .header-hero > .container {
+    .hero-refined .container {
         position: relative;
-        z-index: 1;
+        z-index: 2;
+        max-width: 700px;
+        padding: 0 1rem;
     }
 
-/* Transição e mudança de estilo ao fazer scroll */
-.navbar {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+.refined-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
 }
 
-    .navbar.scrolled {
-        background-color: #ffffff !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+.refined-subtitle {
+    margin-top: 0.6rem;
+    font-size: 1.15rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.3s ease forwards;
+    color: var(--fundo-claro);
+}
 
-/* Ajustes responsivos menores */
-@media (max-width: 767px) {
-    .header-hero {
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-refined {
         height: 40vh;
     }
 
-        .header-hero h1 {
-            font-size: 1.75rem;
-        }
-
-        .header-hero p.lead {
-            font-size: 1rem;
-        }
-}
-
-/* =========================================
-   HEADER + NAVBAR MODERNO E RESPONSIVO
-   ========================================= */
-header {
-    background: var(--grad-rosa-roxo);
-    padding: 1rem 0;
-    position: relative;
-    z-index: 999;
-}
-
-/* Marca (logo/nome do blog) */
-.navbar-brand {
-    color: #fff !important;
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    transition: transform 0.3s ease;
-}
-
-    .navbar-brand:hover {
-        transform: scale(1.05);
+    .refined-title {
+        font-size: 2rem;
     }
 
-/* Links do menu */
-.nav-link {
-    color: #fff !important;
-    margin-left: 1rem;
-    font-weight: 500;
-    font-size: 1rem;
-    position: relative;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0;
-}
-
-    /* Efeito underline animado */
-    .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0%;
-        height: 2px;
-        background: #fff;
-        transition: width 0.3s ease;
-        border-radius: 2px;
+    .refined-subtitle {
+        font-size: 1rem;
     }
-
-    .nav-link:hover::after {
-        width: 100%;
-    }
-
-/* Botão do menu (mobile) */
-.navbar-toggler {
-    border: none;
-    outline: none;
 }
 
-.navbar-toggler-icon {
-    filter: invert(1);
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-/* Efeito ao rolar a página */
-.navbar {
-    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-}
-
-    .navbar.scrolled {
-        background: #fff !important;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        padding: 0.6rem 0;
-    }
-
-        .navbar.scrolled .nav-link {
-            color: var(--texto-escuro) !important;
-        }
-
-        .navbar.scrolled .navbar-brand {
-            color: var(--rosa-vivo) !important;
-        }
-
-/* Hero abaixo do header */
-.header-hero {
-    background-image: url('sua-imagem-de-fundo.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 65vh;
-    min-height: 320px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.footer-modern {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fundo-claro);
+    color: var(--texto-escuro);
     text-align: center;
-    color: #fff;
+    padding: 2rem 1rem 1rem;
+    border-top: 1px solid var(--rosa-medio);
 }
 
-    /* Overlay */
-    .header-hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.45);
-    }
-
-    /* Conteúdo centralizado */
-    .header-hero .container {
-        position: relative;
-        z-index: 2;
-    }
-
-    .header-hero h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        animation: fadeDown 1s ease forwards;
-    }
-
-    .header-hero p {
-        font-size: 1.25rem;
-        margin-bottom: 1.5rem;
-        animation: fadeUp 1.2s ease forwards;
-    }
-
-    /* Botão no hero */
-    .header-hero .btn-hero {
-        background: var(--rosa-vivo);
-        border: none;
-        color: #fff;
-        font-weight: 600;
-        padding: 0.8rem 1.8rem;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-    }
-
-        .header-hero .btn-hero:hover {
-            background: var(--roxo-vivo);
-            transform: scale(1.05);
-        }
-
-/* Animações */
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.footer-top {
+    margin-bottom: 1.5rem;
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--rosa-vivo);
+    margin: 0 0 0.5rem 0;
 }
 
-/* Responsividade */
-@media (max-width: 991px) {
-    .nav-link {
-        margin: 0.5rem 0;
-    }
+.footer-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
 }
 
-@media (max-width: 767px) {
-    .header-hero {
-        height: 50vh;
-    }
-
-        .header-hero h1 {
-            font-size: 2rem;
-        }
-
-        .header-hero p {
-            font-size: 1rem;
-        }
+/* Links em linha */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-/* ===========================
-   NAVBAR
-   =========================== */
-.custom-navbar {
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-    .custom-navbar .navbar-brand {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-size: 1.6rem;
-        color: #333;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .custom-navbar .nav-link {
+    .footer-links li a {
+        color: var(--texto-escuro);
+        text-decoration: none;
         font-weight: 500;
-        margin-left: 1rem;
-        color: #444;
-        position: relative;
         transition: color 0.3s ease;
     }
 
-        .custom-navbar .nav-link.active,
-        .custom-navbar .nav-link:hover {
-            color: #e75480; /* rosa elegante */
+        .footer-links li a:hover {
+            color: var(--rosa-vivo);
         }
 
-        .custom-navbar .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0%;
-            height: 2px;
-            background: #e75480;
-            transition: width 0.3s ease;
+/* Redes sociais */
+.footer-social {
+    margin-top: 0.5rem;
+}
+
+    .footer-social a {
+        color: var(--texto-escuro);
+        margin: 0 0.6rem;
+        font-size: 1.4rem;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+        .footer-social a:hover {
+            color: var(--rosa-vivo);
+            transform: scale(1.2);
         }
 
-        .custom-navbar .nav-link:hover::after,
-        .custom-navbar .nav-link.active::after {
-            width: 100%;
-        }
-
-    .custom-navbar .btn {
-        border-radius: 25px;
-        font-weight: 600;
-        padding: 0.5rem 1.2rem;
-    }
-
-/* ===========================
-   HERO
-   =========================== */
-.hero {
-    height: 55vh;
-    background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-    position: relative;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-    .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-    }
-
-    .hero .container {
-        position: relative;
-        z-index: 2;
-    }
-
-/* Título */
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 0.8rem;
-    animation: fadeDown 1s ease forwards;
-}
-
-/* Subtítulo */
-.hero-subtitle {
-    font-size: 1.1rem;
-    font-weight: 400;
-    opacity: 0.9;
-    animation: fadeUp 1.2s ease forwards;
-}
-
-/* Animações */
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Footer bottom */
+.footer-bottom {
+    font-size: 0.9rem;
+    color: #444;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .hero {
-        height: 45vh;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem;
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 }
+
+.footer-modern-simple {
+    font-family: 'Poppins', sans-serif;
+    background: var(--grad-rosa-roxo);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.footer-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.footer-social a {
+    color: #fff;
+    margin: 0 0.6rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+    .footer-social a:hover {
+        color: var(--rosa-claro);
+        transform: scale(1.3);
+    }
+
+.footer-bottom {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+
+    .footer-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .footer-social a {
+        font-size: 1.3rem;
+        margin: 0 0.4rem;
+    }
+}
+
+/* blog/wwwroot/css/site.css */
+.custom-toggler {
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
+    .custom-toggler:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.15rem var(--rosa-vivo, #FF85A1);
+    }
+
+    .custom-toggler .bi-list {
+        color: #fff;
+        font-size: 2rem;
+        transition: color 0.3s;
+    }
+
+.navbar.scrolled .custom-toggler .bi-list {
+    color: var(--rosa-vivo);
+}
+
+/* Animação suave para o menu hamburguer */
+.collapse.navbar-collapse {
+    transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.collapse.navbar-collapse.show {
+    max-height: 500px; /* ajuste conforme o tamanho do menu */
+    opacity: 1;
+}
+
+.collapse.navbar-collapse {
+    background: rgba(255,255,255,0.95);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        align-items: center;
+        gap: 1.2rem;
+        padding-bottom: 1rem;
+    }
+
+        .navbar-nav .nav-link {
+            font-size: 1.15rem;
+            padding: 0.7rem 0;
+        }
+}
+
+
+@media (min-width: 992px) {
+    .collapse.navbar-collapse {
+        display: flex !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        transition: none !important;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
