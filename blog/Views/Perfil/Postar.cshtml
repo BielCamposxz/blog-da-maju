@@ -1,0 +1,11 @@
+﻿@model PostModel
+
+<form method="post" asp-action="Enviar" asp-controller="Perfil">
+    <div class="form-group">
+        <label for="arquivo">Escolher imagem:</label>
+        <input type="file" asp-for="Imagem" name="arquivo" class="form-control" accept="image/*" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+
+</form>

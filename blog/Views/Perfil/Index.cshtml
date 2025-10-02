@@ -1,0 +1,11 @@
+﻿@foreach (var foto in Model)
+{
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <img src="@Url.Action("Exibir", "Fotos", new { id = foto.Id })" class="card-img-top" />
+            <div class="card-body">
+                <p class="card-text">@foto.NomeArquivo</p>
+            </div>
+        </div>
+    </div>
+}
