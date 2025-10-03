@@ -1,11 +1,20 @@
-﻿@foreach (var foto in Model)
+﻿@model List<PostModel>
+
+@if (Model != null && Model.Any())
 {
-    <div class="col-md-3">
-        <div class="card mb-3">
-            <img src="@Url.Action("Exibir", "Fotos", new { id = foto.Id })" class="card-img-top" />
+    @foreach (var post in Model)
+    {
+        <div class="card mt-3">
             <div class="card-body">
-                <p class="card-text">@foto.NomeArquivo</p>
+                <p>@post.Descricao</p>
+                <p><small>@post.DataDePostagem.ToString("dd/MM/yyyy HH:mm")</small></p>
+                <p>Likes: @post.Likes</p>
+                <img src="/Perfil/Exibir/@post.Id" class="img-fluid" />
             </div>
         </div>
-    </div>
+    }
+}
+else
+{
+    <p>Nenhum post encontrado.</p>
 }

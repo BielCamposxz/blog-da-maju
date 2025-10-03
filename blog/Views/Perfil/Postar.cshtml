@@ -1,11 +1,7 @@
 ﻿@model PostModel
 
-<form method="post" asp-action="Enviar" asp-controller="Perfil">
-    <div class="form-group">
-        <label for="arquivo">Escolher imagem:</label>
-        <input type="file" asp-for="Imagem" name="arquivo" class="form-control" accept="image/*" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
-
+<form asp-controller="Perfil" asp-action="Enviar" method="post" enctype="multipart/form-data">
+    <input type="file" name="arquivo" accept="image/*" capture="environment" class="form-control" />
+    <input type="text" name="Descricao" class="form-control form-control-lg rounded-pill" placeholder="Descrição do post" />
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
 </form>

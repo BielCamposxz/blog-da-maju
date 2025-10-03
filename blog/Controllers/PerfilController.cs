@@ -16,7 +16,9 @@ namespace blog.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var posts = _context.Post.ToList();
+            return View(posts);
+
         }
         public IActionResult Postar()
         {
@@ -31,28 +33,28 @@ namespace blog.Controllers
          */
 
         [HttpPost]
-        public async Task<IActionResult> Enviar(IFormFile arquivo)
+        [HttpPost]
+        public async Task<IActionResult> Enviar(PostModel post, IFormFile arquivo)
         {
             if (arquivo != null && arquivo.Length > 0)
             {
                 using var ms = new MemoryStream();
                 await arquivo.CopyToAsync(ms);
 
-                var foto = new PostModel
-                {
-                    NomeArquivo = arquivo.FileName,
-                    Imagem = ms.ToArray(),
-                    ContentType = arquivo.ContentType
-                };
+                post.NomeArquivo = arquivo.FileName;
+                post.Imagem = ms.ToArray();
+                post.ContentType = arquivo.ContentType;
+                post.Likes = 0;
+                post.DataDePostagem = DateTime.Now;
 
-                _context.Add(foto);
+                _context.Post.Add(post);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
             ModelState.AddModelError("", "Selecione uma imagem válida.");
-            return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Exibir(int id)
