@@ -1,7 +1,12 @@
 ﻿@model PostModel
 
+@{
+    Layout = "_LayoutPerfil";
+}
+
 <form asp-controller="Perfil" asp-action="Enviar" method="post" enctype="multipart/form-data">
     <input type="file" name="arquivo" accept="image/*" capture="environment" class="form-control" />
     <input type="text" name="Descricao" class="form-control form-control-lg rounded-pill" placeholder="Descrição do post" />
+    <input type="text" name="Hashtags" class="form-control form-control-lg rounded-pill" placeholder="Hashtags do post" />
     <button type="submit" class="btn btn-primary mt-2">Enviar</button>
 </form>

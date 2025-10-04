@@ -1,5 +1,6 @@
 wwwroot\assets\perfil.jpg
 wwwroot\assets\post1.jpg
+wwwroot\css\Perfil.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js

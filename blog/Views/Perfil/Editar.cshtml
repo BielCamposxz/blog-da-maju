@@ -1,0 +1,12 @@
+﻿@model perfilModel
+
+@{
+    Layout = "_LayoutPerfil";
+}
+
+<form asp-controller="Perfil" asp-action="EnviarPerfil" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" value="1" />
+    <input type="text" asp-for="NomeUsuario" />
+    <input type="file" name="arquivo" />
+    <button type="submit">Enviar</button>
+</form>

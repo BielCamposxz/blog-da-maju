@@ -1,53 +1,135 @@
-﻿@{
+﻿@model PerfilPostModel
+@{
     ViewData["Title"] = "pagina inicial";
+    Layout = "_Layout";
 }
 
 <div class="container my-5 d-flex justify-content-center" id="blog">
   <div class="wrapper" style="max-width: 600px; width: 100%;">
+    @if (Model != null && Model.Posts != null)
+    {
+        foreach (var post in Model.Posts)
+        {
+            <div class="card mt-3 shadow-lg border-0 rounded-4">
+                <div class="card-body p-0">
+                    <article class="post-entry bg-white rounded-4 overflow-hidden">
+                        <!-- Cabeçalho: perfil + data -->
+                        <header class="d-flex align-items-center p-3 border-bottom">
+                            <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-danger"
+                                 style="width:48px; height:48px;">
+                                 @if (Model.Perfil.FotoDePerfil != null && Model.Perfil.FotoDePerfil.Length > 0)
+                                    {
+                                        <img src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = Model.Perfil.Id })"
+                                             alt="Foto de perfil de @(Model.Perfil.NomeUsuario)" loading="lazy"
+                                             class="w-100 h-100 object-fit-cover">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/assets/perfil.jpg"
+                                             alt="Foto de perfil padrão" loading="lazy"
+                                             class="w-100 h-100 object-fit-cover">
+                                    }                                 @if (Model.Perfil.FotoDePerfil != null && Model.Perfil.FotoDePerfil.Length > 0)
+                                    {
+                                        <img src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = Model.Perfil.Id })"
+                                             alt="Foto de perfil de @(Model.Perfil.NomeUsuario)" loading="lazy"
+                                             class="w-100 h-100 object-fit-cover">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/assets/perfil.jpg"
+                                             alt="Foto de perfil padrão" loading="lazy"
+                                             class="w-100 h-100 object-fit-cover">
+                                    }   
+                            </div>
+                            <div>
+                                <h2 class="h6 mb-0 fw-bold">@Model.Perfil.NomeUsuario</h2>
+                                <time class="text-muted small d-block">
+                                    <small>
+                                        @{
+                                            var agora = DateTime.Now;
+                                            var diferenca = agora - post.DataDePostagem;
+                                            string textoData;
 
-    <article class="post-entry shadow rounded bg-white border">
+                                            if (diferenca.TotalMinutes < 60)
+                                            {
+                                                int minutos = (int)diferenca.TotalMinutes;
+                                                if (minutos <= 0) minutos = 1;
+                                                textoData = $"Postado há {minutos} minuto{(minutos > 1 ? "s" : "")}";
+                                            }
+                                            else if (diferenca.TotalHours < 24)
+                                            {
+                                                int horas = (int)diferenca.TotalHours;
+                                                textoData = $"Postado há {horas} hora{(horas > 1 ? "s" : "")}";
+                                            }
+                                            else if (diferenca.TotalDays < 7)
+                                            {
+                                                int dias = (int)diferenca.TotalDays;
+                                                textoData = $"Postado há {dias} dia{(dias > 1 ? "s" : "")}";
+                                            }
+                                            else
+                                            {
+                                                if (post.DataDePostagem.Year == DateTime.Now.Year)
+                                                {
+                                                    textoData = post.DataDePostagem.ToString("dd 'de' MMMM", new System.Globalization.CultureInfo("pt-BR"));
+                                                }
+                                                else
+                                                {
+                                                    textoData = post.DataDePostagem.ToString("dd 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("pt-BR"));
+                                                }
+                                            }
+                                        }
+                                        <small class="text-muted">@textoData</small>
+                                    </small>
+                                </time>
+                            </div>
+                        </header>
 
-        <!-- Cabeçalho: perfil + data -->
-        <header class="d-flex align-items-center p-3">
-            <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-rose" style="width:48px; height:48px;">
-                <img src="~/assets/perfil.jpg"
-                     alt="Foto de perfil de maria julia" loading="lazy" class="w-100 h-100 object-fit-cover">
-            </div>
-            <div>
-                <h2 class="h5 mb-0">Maria Julia</h2>
-                <time class="text-muted small">28 de Setembro de 2025</time>
-            </div>
-        </header>
+                        <!-- Imagem do post -->
+                        <div style="height: 500px; background-color: #f9f9f9; overflow:hidden;">
+                            <img src="/Perfil/Exibir/@post.Id"
+                                 class="w-100 h-100"
+                                 style="object-fit: cover;" />
+                        </div>
+                    </article>
 
-        <!-- Imagem do post -->
-            <div style="height: 500px; background-color: #f9f9f9;">
-                <img src="~/assets/post1.jpg"
-                     alt="Foto do post"
-                     class="img-fluid w-100 h-100"
-                     style="object-fit: contain;"
-                     loading="lazy">
-            </div>
+                    <!-- Descrição -->
+                    <section class="px-3 py-2">
+                        <p class="mb-1">
+                            <strong class="me-1">@Model.Perfil.NomeUsuario</strong> @post.Descricao
+                            <span class="text-muted">@post.Hashtags</span>
+                        </p>
+                    </section>
 
-    </article>
-
-    <!-- Aqui fora do article, mas dentro do wrapper que tem a mesma largura -->
-    <div class="d-flex align-items-center px-3 pt-3 pb-1">
-        <button type="button" class="btn btn-link text-danger me-3 p-0 fs-4" aria-label="Curtir">
-            <i class="bi bi-heart"></i>
+                    <!-- Curtir/Descurtir -->
+                    <!-- Curtir/Descurtir -->
+<div class="d-flex align-items-center px-3 pb-3">
+    <form asp-controller="Perfil" asp-action="ToggleLike" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="@post.Id" />
+        <button type="submit"
+                class="btn btn-link p-0 fs-4 d-flex align-items-center @(post.LikedByCurrentUser ? "" : "text-danger")"
+                aria-label="Curtir">
+            @if (post.LikedByCurrentUser)
+            {
+                <i class="bi bi-heart-fill text-danger me-2"></i>
+            }
+            else
+            {
+                <i class="bi bi-heart me-2"></i>
+            }
         </button>
-        <button type="button" class="btn btn-link text-secondary p-0 fs-4" aria-label="Comentar">
-            <i class="bi bi-chat"></i>
-        </button>
-    </div>
+    </form>
+    <span class="fs-6 fw-semibold text-dark">@post.Likes</span>
+</div>
 
-    <section class="px-3 pb-4">
-        <p class="mb-1">
-            <strong>Maria Julia</strong> autocuidado é um gesto de amor ✨🌷.
-            Reserve um momento só seu hoje.
-            <span class="text-muted">#amorpróprio #beleza #flores</span>
-        </p>
-        <a href="#" class="text-decoration-none small text-secondary">Ver todos os 12 comentários</a>
-    </section>
-
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nenhum post encontrado.</p>
+    }
   </div>
 </div>
+
+

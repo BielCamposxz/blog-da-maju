@@ -1,20 +1,10 @@
-﻿@model List<PostModel>
+﻿@{
+    Layout = "_LayoutPerfil";
+}
 
-@if (Model != null && Model.Any())
-{
-    @foreach (var post in Model)
-    {
-        <div class="card mt-3">
-            <div class="card-body">
-                <p>@post.Descricao</p>
-                <p><small>@post.DataDePostagem.ToString("dd/MM/yyyy HH:mm")</small></p>
-                <p>Likes: @post.Likes</p>
-                <img src="/Perfil/Exibir/@post.Id" class="img-fluid" />
-            </div>
-        </div>
-    }
-}
-else
-{
-    <p>Nenhum post encontrado.</p>
-}
+
+<a asp-action="Editar" asp-controller="Perfil">editar perfil</a>
+<br>
+<a asp-action="Postar" asp-controller="Perfil">fazer uma postagem</a>
+<br>
+<a asp-action="Index" asp-controller="Home">Voltar</a>

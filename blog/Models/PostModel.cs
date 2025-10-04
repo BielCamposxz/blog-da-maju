@@ -1,4 +1,6 @@
-﻿namespace blog.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace blog.Models
 {
     public class PostModel
     {
@@ -8,7 +10,9 @@
 
         public int Likes { get; set; }
 
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
+
+        public string? Hashtags { get; set; }
 
         public byte[] Imagem { get; set; } = Array.Empty<byte>();
 
@@ -16,5 +20,9 @@
 
         public string ContentType { get; set; } = string.Empty;
 
+        [NotMapped]
+        public bool LikedByCurrentUser { get; set; }
+
+       
     }
 }

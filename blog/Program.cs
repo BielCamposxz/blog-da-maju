@@ -8,6 +8,9 @@ var connectionString = builder.Configuration.GetConnectionString("DataBase");
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+// Adicione o serviço de sessão
+builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -25,6 +28,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Adicione o middleware de sessão
+app.UseSession();
 
 app.UseAuthorization();
 
