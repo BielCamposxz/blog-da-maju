@@ -14,5 +14,7 @@ namespace blog.Data
 
         public DbSet<perfilModel> Perfil {get; set;}
         public DbSet<UsuarioModel> Usuario {get; set;}
+
+        public DbSet<LikesModel> LikesModel { get; set; }
     }
 }

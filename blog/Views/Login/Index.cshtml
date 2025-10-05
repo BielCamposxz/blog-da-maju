@@ -1,0 +1,66 @@
+﻿@model UsuarioModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutCadrastro.cshtml";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+        <div class="toast show toast-shor" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Ops, algo deu errado!</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body">
+                @TempData["MensagemErro"]
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="card shadow-lg border-0 rounded-4" style="max-width: 420px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="text-center fw-bold mb-4 text-primary">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Acesse sua Conta
+            </h2>
+
+            <form asp-action="Entrar" asp-controller="Login" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" id="Login" asp-for="Login" placeholder="Usuário">
+                    @Html.ValidationMessageFor(x => x.Login)
+                    <label for="Login"><i class="bi bi-person-badge-fill me-2"></i>Usuário</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control rounded-3" id="Senha" asp-for="Senha" placeholder="Senha">
+                    @Html.ValidationMessageFor(x => x.Senha)
+                    <label for="Senha"><i class="bi bi-lock-fill me-2"></i>Senha</label>
+
+                </div>
+
+                <p class="mt-1 mb-4">
+                    Não tem uma conta?
+                    <a asp-controller="Cadastro" asp-action="Index" class="fw-semibold text-primary text-decoration-none">
+                        Crie uma
+                    </a>
+                </p>
+
+
+                <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-semibold mb-1">
+                    <i class="bi bi-door-open-fill me-1"></i> Entrar
+                </button>
+
+
+                <a asp-controller="Home" asp-action="Index"
+                   class="btn btn-outline-secondary w-100 mt-2 py-2 rounded-3 fw-semibold">
+                    <i class="bi bi-arrow-left-circle me-1"></i> Voltar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

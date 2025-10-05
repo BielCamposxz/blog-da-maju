@@ -60,3 +60,7 @@ function previewPostImage(event) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$('.btn-close').click(function () {
+    $(".toast-shor").hide("hide")
+})

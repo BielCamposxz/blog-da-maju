@@ -1,5 +1,8 @@
 wwwroot\assets\perfil.jpg
 wwwroot\assets\post1.jpg
+wwwroot\css\cadastro.css
+wwwroot\css\Login.css
+wwwroot\css\Perfil.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js
@@ -60,4 +63,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\Perfil.css

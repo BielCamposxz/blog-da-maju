@@ -668,4 +668,75 @@ html {
         box-shadow: 0 8px 25px rgba(180,155,229,0.3);
     }
 
+.nav-link.hover-rose:hover {
+    background-color: #FFE5ED;
+    color: #FF85A1 !important;
+    transition: 0.3s;
+}
 
+.nav-link.hover-bg-light:hover {
+    background-color: #F8F9FA;
+    transition: 0.3s;
+}
+
+/* Efeito de hover na foto de perfil */
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 133, 161, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Para mobile, ajuste de padding e alinhamento */
+@media (max-width: 767px) {
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.nav-link.hover-rose:hover {
+    background-color: #FFE5ED;
+    color: #FF85A1 !important;
+    transition: 0.3s;
+}
+
+.nav-link.hover-bg-light:hover {
+    background-color: #F8F9FA;
+    transition: 0.3s;
+}
+
+/* Efeito de hover na foto de perfil */
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 133, 161, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Ajustes mobile */
+@media (max-width: 767px) {
+    .navbar-nav .nav-item
+
+{
+    margin-bottom: 0.5rem;
+}
+
+.navbar-nav .profile-pic {
+    margin-left: 0;
+}
+
+}
+
+.btn-outline-rose {
+    color: #FF85A1;
+    border-color: #FF85A1;
+}
+
+    .btn-outline-rose:hover {
+        background-color: #FF85A1;
+        color: #fff;
+    }
+
+
+.field-validation-error {
+    color: red;
+    margin-left: 5px;
+}

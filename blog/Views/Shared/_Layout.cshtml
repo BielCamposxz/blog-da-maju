@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using blog.Enum
+@model PerfilPostModel
+
+@{
+    var httpContextAccessor = new HttpContextAccessor();
+    var helper = new blog.Helper.sessaoDoUsuario(httpContextAccessor);
+    var usuario = helper.BuscarSessaoDoUsuario();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,22 +32,45 @@
                 <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span><i class="bi bi-list"></i></span>
                 </button>
-                <div class="collapse navbar-collapse" id="mainNav">
+                
+
+                <div class="collapsenavbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Cadastro">Cadastra-se</a></li>
-                        <li>
-                            <a asp-controller="Perfil" asp-action="Index">
-                                <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-rose" style="width:48px; height:48px;">
-                                    <img src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = 1 })"
-                                         onerror="this.onerror=null;this.src='@Url.Content("~/assets/perfil.jpg")';"
-                                         alt="Foto de perfil" loading="lazy" class="w-100 h-100 object-fit-cover">
-                                </div>
-                            </a>
-                            
-                        </li>
+                        @if (usuario == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" asp-action="Index" asp-controller="Cadastro">
+                                    <i class="bi bi-person-plus me-1"></i> Cadastra-se
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" asp-action="Index" asp-controller="Login">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" asp-action="Sair" asp-controller="Login">
+                                    <i class="bi bi-box-arrow-right me-1"></i> Sair
+                                </a>
+                            </li>
+
+                            @if (usuario.isAdmin == true)
+                            {
+                                <li>
+                                    <a asp-controller="Perfil" asp-action="Index">
+                                        <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-rose" style="width:48px; height:48px;">
+                                            <img id="avatarPreview" src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = Model.Perfil.Id })"
+                                                 alt="Foto de perfil"
+                                                 class="rounded-circle avatar-profile shadow-lg">
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                        }
+
                     </ul>
                 </div>
             </div>

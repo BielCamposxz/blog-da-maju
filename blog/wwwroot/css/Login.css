@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(135deg, #ff80ab 0%, #b388ff 100%);
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;   
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7b1fa2, #ba68c8);
+    border: none;
+    transition: all 0.3s;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #9c27b0, #ce93d8);
+        transform: translateY(-2px);
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.field-validation-error {
+    color: red;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}

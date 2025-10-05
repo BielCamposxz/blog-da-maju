@@ -2,34 +2,61 @@
 
 @{
     ViewData["Title"] = "Cadastro";
-    Layout = "_LayoutCadrastro";
+    Layout = "~/Views/Shared/_LayoutCadrastro.cshtml";
 }
 
-<div class="cadastro-container">
-    <h1>Crie sua Conta</h1>
+<div class="container  d-flex justify-content-center align-items-center min-vh-100 bg-light" id="main" >
+    <div class="card shadow-lg border-0 rounded-4" style="max-width: 480px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="text-center fw-bold mb-4 text-primary">
+                <i class="bi bi-person-plus-fill me-2"></i>Crie sua Conta
+            </h2>
 
-    <form asp-action="CriarConta" asp-controller="Cadastro" method="post">
-        <div class="mb-3">
-            <label for="Nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Digite seu nome completo">
+            <form asp-action="Cadastrar" asp-controller="Cadastro" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" id="Nome" asp-for="Nome" placeholder="Nome completo">
+                    @Html.ValidationMessageFor(x => x.Nome)
+
+                    <label for="Nome"><i class="bi bi-person-fill me-2"></i>Nome completo</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" id="Login" asp-for="Login" placeholder="Usuário">
+                    @Html.ValidationMessageFor(x => x.Login)
+
+                    <label for="Login"><i class="bi bi-person-badge-fill me-2"></i>Usuário</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-3" id="Email" asp-for="Email" placeholder="E-mail">
+                    @Html.ValidationMessageFor(x => x.Email)
+
+                    <label for="Email"><i class="bi bi-envelope-fill me-2"></i>E-mail</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control rounded-3" id="Senha" asp-for="Senha" placeholder="Senha">
+                    @Html.ValidationMessageFor(x => x.Senha)
+
+                    <label for="Senha"><i class="bi bi-lock-fill me-2"></i>Senha</label>
+                </div>
+
+                <p class="mt-1 mb-4">
+                    Ja possui uma conta?
+                    <a asp-controller="Login" asp-action="Index" class="fw-semibold text-primary text-decoration-none">
+                        Entrar
+                    </a>
+                </p>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-semibold">
+                    <i class="bi bi-check-circle-fill me-1"></i> Cadastrar
+                </button>
+
+                <a asp-controller="Home" asp-action="Index"
+                   class="btn btn-outline-secondary w-100 mt-3 py-2 rounded-3 fw-semibold">
+                    <i class="bi bi-arrow-left-circle me-1"></i> Voltar
+                </a>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label for="Login" class="form-label">Login</label>
-            <input type="text" class="form-control" id="Login" asp-for="Login" placeholder="Escolha um nome de usuário">
-        </div>
-
-        <div class="mb-3">
-            <label for="Email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Digite seu e-mail">
-        </div>
-
-        <div class="mb-3">
-            <label for="Senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="Senha" asp-for="Senha" placeholder="Crie uma senha segura">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-2">Voltar</a>
-    </form>
+    </div>
 </div>

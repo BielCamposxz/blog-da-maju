@@ -29,6 +29,8 @@
                         <div class="mb-4">
                             <label asp-for="NomeUsuario" class="form-label fw-semibold">Nome de usuário</label>
                             <input asp-for="NomeUsuario" class="form-control form-control-lg" placeholder="Digite seu nome" />
+                            @Html.ValidationMessageFor(x => x.NomeUsuario)
+
                         </div>
 
                         <!-- Botão salvar -->

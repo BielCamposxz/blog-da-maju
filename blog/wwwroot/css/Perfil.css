@@ -173,6 +173,11 @@ body {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.field-validation-error {
+    color: red;
+    margin-left: 5px;
+}
+
     .form-control:focus {
         border-color: #B49BE5;
         box-shadow: 0 0 0 0.25rem rgba(180,155,229,0.25);
@@ -207,3 +212,5 @@ body {
                 transform: translateY(0);
             }
         }
+
+

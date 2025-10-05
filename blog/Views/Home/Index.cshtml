@@ -84,24 +84,24 @@
 
                     <!-- Curtir/Descurtir -->
                     <!-- Curtir/Descurtir -->
-<div class="d-flex align-items-center px-3 pb-3">
-    <form asp-controller="Perfil" asp-action="ToggleLike" method="post" style="display:inline;">
-        <input type="hidden" name="id" value="@post.Id" />
-        <button type="submit"
-                class="btn btn-link p-0 fs-4 d-flex align-items-center @(post.LikedByCurrentUser ? "" : "text-danger")"
-                aria-label="Curtir">
-            @if (post.LikedByCurrentUser)
-            {
-                <i class="bi bi-heart-fill text-danger me-2"></i>
-            }
-            else
-            {
-                <i class="bi bi-heart me-2"></i>
-            }
-        </button>
-    </form>
-    <span class="fs-6 fw-semibold text-dark">@post.Likes</span>
-</div>
+                    <div class="d-flex align-items-center px-3 pb-3">
+                        <form asp-controller="Perfil" asp-action="ToggleLike" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@post.Id" />
+                            <button type="submit"
+                                    class="btn btn-link p-0 fs-4 d-flex align-items-center @(post.LikedByCurrentUser ? "" : "text-danger")"
+                                    aria-label="Curtir">
+                                @if (post.LikedByCurrentUser)
+                                {
+                                    <i class="bi bi-heart-fill text-danger me-2"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-heart me-2"></i>
+                                }
+                            </button>
+                        </form>
+                        <span class="fs-6 fw-semibold text-dark">@post.Likes</span>
+                    </div>
 
                 </div>
             </div>

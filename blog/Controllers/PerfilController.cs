@@ -3,6 +3,7 @@ using blog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using blog.Helper;
 
 namespace blog.Controllers
 {
@@ -10,10 +11,12 @@ namespace blog.Controllers
     {
 
         private readonly BancoContext _context;
+        private readonly IsessaoDoUsuario _sessaoDoUsuario;
 
-        public PerfilController(BancoContext context)
+        public PerfilController(BancoContext context, IsessaoDoUsuario sessaoDoUsuario)
         {
             _context = context; 
+            _sessaoDoUsuario = sessaoDoUsuario;
         }
         public IActionResult Index()
         {
@@ -152,22 +155,31 @@ namespace blog.Controllers
         [HttpPost]
         public IActionResult ToggleLike(int id)
         {
+            var usuario = _sessaoDoUsuario.BuscarSessaoDoUsuario();
+            if (usuario == null) return RedirectToAction("Index", "Login");
+
             var post = _context.Post.Find(id);
-            if (post == null)
-                return RedirectToAction("Index", "Home");
+            if (post == null) return RedirectToAction("Index", "Home");
 
-            string sessionKey = $"liked_{id}";
-            bool liked = HttpContext.Session.GetString(sessionKey) == "1";
+            // Verifica se o usuário já curtiu
+            var likeExistente = _context.LikesModel.FirstOrDefault(l => l.PostId == id && l.UsuarioId == usuario.Id);
 
-            if (liked)
+            if (likeExistente != null)
             {
+                // Se já curtiu, remove o like
+                _context.LikesModel.Remove(likeExistente);
                 post.Likes = Math.Max(0, post.Likes - 1);
-                HttpContext.Session.Remove(sessionKey);
             }
             else
             {
+                // Se não curtiu ainda, adiciona like
+                _context.LikesModel.Add(new LikesModel
+                {
+                    PostId = id,
+                    UsuarioId = usuario.Id,
+                    DataDeLike = DateTime.Now
+                });
                 post.Likes++;
-                HttpContext.Session.SetString(sessionKey, "1");
             }
 
             _context.Update(post);
@@ -175,5 +187,6 @@ namespace blog.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/figue/cursos/programador-tech/projetos/blog/blog/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/figue/cursos/programador-tech/projetos/blog/blog/Views/Perfil/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXEVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -71,6 +75,10 @@ build_metadata.AdditionalFiles.CssScope = b-9seuzognnd
 [C:/Users/figue/cursos/programador-tech/projetos/blog/blog/Views/Shared/_LayoutCadrastro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDYWRyYXN0cm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-rguhgwtoku
+
+[C:/Users/figue/cursos/programador-tech/projetos/blog/blog/Views/Shared/_LayoutLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-l3f2s9lpef
 
 [C:/Users/figue/cursos/programador-tech/projetos/blog/blog/Views/Shared/_LayoutPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQZXJmaWwuY3NodG1s
