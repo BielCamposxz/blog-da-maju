@@ -1,0 +1,35 @@
+﻿@model UsuarioModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "_LayoutCadrastro";
+}
+
+<div class="cadastro-container">
+    <h1>Crie sua Conta</h1>
+
+    <form asp-action="CriarConta" asp-controller="Cadastro" method="post">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Digite seu nome completo">
+        </div>
+
+        <div class="mb-3">
+            <label for="Login" class="form-label">Login</label>
+            <input type="text" class="form-control" id="Login" asp-for="Login" placeholder="Escolha um nome de usuário">
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Digite seu e-mail">
+        </div>
+
+        <div class="mb-3">
+            <label for="Senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="Senha" asp-for="Senha" placeholder="Crie uma senha segura">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-2">Voltar</a>
+    </form>
+</div>

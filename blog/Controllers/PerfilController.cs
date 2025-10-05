@@ -24,10 +24,8 @@ namespace blog.Controllers
                 post.LikedByCurrentUser = HttpContext.Session.GetString(sessionKey) == "1";
             }
 
-            // Busca o perfil de id 1
             var perfil = _context.Perfil.Find(1);
 
-            // Se não existir, cria um perfil padrão
             if (perfil == null)
             {
                 perfil = new perfilModel
@@ -41,14 +39,12 @@ namespace blog.Controllers
                 _context.Perfil.Add(perfil);
                 _context.SaveChanges();
             }
-            // Se existir mas não tem nome, define um padrão
             if (string.IsNullOrWhiteSpace(perfil.NomeUsuario))
             {
                 perfil.NomeUsuario = "Usuário";
                 _context.Update(perfil);
                 _context.SaveChanges();
             }
-            // Se não tem foto, garante que não seja nulo
             if (perfil.FotoDePerfil == null)
             {
                 perfil.FotoDePerfil = Array.Empty<byte>();
@@ -107,7 +103,7 @@ namespace blog.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Perfil");
         }
 
        
@@ -160,7 +156,6 @@ namespace blog.Controllers
             if (post == null)
                 return RedirectToAction("Index", "Home");
 
-            // Simulação de controle por usuário usando Session
             string sessionKey = $"liked_{id}";
             bool liked = HttpContext.Session.GetString(sessionKey) == "1";
 

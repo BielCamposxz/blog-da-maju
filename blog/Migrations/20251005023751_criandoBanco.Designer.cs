@@ -12,8 +12,8 @@ using blog.Data;
 namespace blog.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20251004001838_cnaf")]
-    partial class cnaf
+    [Migration("20251005023751_criandoBanco")]
+    partial class criandoBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,7 @@ namespace blog.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Hashtags")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<byte[]>("Imagem")
@@ -60,6 +61,38 @@ namespace blog.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("blog.Models.UsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("blog.Models.perfilModel", b =>

@@ -12,9 +12,7 @@ namespace blog.Data
 
         public DbSet<PostModel> Post { get; set; }
 
-        public DbSet<perfilModel> Perfil
-        {
-            get; set;
-        }
+        public DbSet<perfilModel> Perfil {get; set;}
+        public DbSet<UsuarioModel> Usuario {get; set;}
     }
 }

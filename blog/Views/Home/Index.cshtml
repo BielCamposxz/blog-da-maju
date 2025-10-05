@@ -17,29 +17,11 @@
                         <header class="d-flex align-items-center p-3 border-bottom">
                             <div class="profile-pic me-3 rounded-circle overflow-hidden border border-2 border-danger"
                                  style="width:48px; height:48px;">
-                                 @if (Model.Perfil.FotoDePerfil != null && Model.Perfil.FotoDePerfil.Length > 0)
-                                    {
+                                 
                                         <img src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = Model.Perfil.Id })"
                                              alt="Foto de perfil de @(Model.Perfil.NomeUsuario)" loading="lazy"
                                              class="w-100 h-100 object-fit-cover">
-                                    }
-                                    else
-                                    {
-                                        <img src="~/assets/perfil.jpg"
-                                             alt="Foto de perfil padrão" loading="lazy"
-                                             class="w-100 h-100 object-fit-cover">
-                                    }                                 @if (Model.Perfil.FotoDePerfil != null && Model.Perfil.FotoDePerfil.Length > 0)
-                                    {
-                                        <img src="@Url.Action("ExibirFotoPerfil", "Perfil", new { id = Model.Perfil.Id })"
-                                             alt="Foto de perfil de @(Model.Perfil.NomeUsuario)" loading="lazy"
-                                             class="w-100 h-100 object-fit-cover">
-                                    }
-                                    else
-                                    {
-                                        <img src="~/assets/perfil.jpg"
-                                             alt="Foto de perfil padrão" loading="lazy"
-                                             class="w-100 h-100 object-fit-cover">
-                                    }   
+                                
                             </div>
                             <div>
                                 <h2 class="h6 mb-0 fw-bold">@Model.Perfil.NomeUsuario</h2>

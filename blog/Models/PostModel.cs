@@ -12,13 +12,13 @@ namespace blog.Models
 
         public string? Descricao { get; set; }
 
-        public string? Hashtags { get; set; }
 
         public byte[] Imagem { get; set; } = Array.Empty<byte>();
 
         public string NomeArquivo { get; set; } = string.Empty;
 
         public string ContentType { get; set; } = string.Empty;
+        public string Hashtags { get; set; }
 
         [NotMapped]
         public bool LikedByCurrentUser { get; set; }

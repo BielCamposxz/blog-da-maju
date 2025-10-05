@@ -1,4 +1,9 @@
-﻿window.addEventListener('scroll', function () {
+﻿console.log("Eu te amo maria julia!");
+console.log("Um dia nos vamos nos casar");
+console.log("se vc esta lendo isso tudo deu certo, e contruimos uma familia juntos");
+console.log("escrito dia: 4/10/2025 16:26")
+
+window.addEventListener('scroll', function () {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -41,3 +46,17 @@ document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+function previewPostImage(event) {
+    const input = event.target;
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const previewWrapper = document.getElementById('postPreviewWrapper');
+            const previewImg = document.getElementById('postPreview');
+            previewImg.src = e.target.result;
+            previewWrapper.style.display = 'block'; // mostra a div
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}

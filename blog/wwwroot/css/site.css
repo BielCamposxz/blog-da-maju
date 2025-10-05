@@ -636,3 +636,36 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Mantém qualidade e corte perfeito tipo Instagram */
+.post-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta sem distorcer */
+    object-position: center; /* Centraliza o foco */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    image-rendering: -webkit-optimize-contrast; /* melhora nitidez */
+    image-rendering: crisp-edges;
+}
+
+    /* Suave efeito hover */
+    .post-img:hover {
+        transform: scale(1.02);
+        filter: brightness(0.9);
+    }
+
+/* Card fixo e nítido */
+.post-card {
+    aspect-ratio: 1 / 1; /* garante o 1x1 mesmo sem a .ratio */
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fdf9fc;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+    .post-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(180,155,229,0.3);
+    }
+
+

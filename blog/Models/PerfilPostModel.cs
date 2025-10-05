@@ -2,7 +2,7 @@
 {
     public class PerfilPostModel
     {
-        public List<PostModel> Posts { get; set; } = new();
-        public perfilModel Perfil { get; set; }
+        public List<PostModel> Posts;
+        public perfilModel Perfil;
     }
 }
