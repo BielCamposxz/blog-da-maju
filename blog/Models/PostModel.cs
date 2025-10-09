@@ -25,7 +25,7 @@ namespace blog.Models
         [StringLength(200, ErrorMessage = "Hashtags devem ter no máximo 200 caracteres")]
         public string Hashtags { get; set; } = string.Empty;
 
-        [NotMapped]
+        
         public bool LikedByCurrentUser { get; set; }
     }
 }

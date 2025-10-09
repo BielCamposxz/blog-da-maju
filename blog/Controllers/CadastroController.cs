@@ -27,7 +27,12 @@ namespace blog.Controllers
         {
             if(ModelState.IsValid)
             {
-               _sessaoDoUsuario.CriarSessaoDoUsuario(usuario);
+                if(_cadrastro.UsuarioExiste(usuario) != null)
+                {
+                    TempData["MensagemErro"] = _cadrastro.UsuarioExiste(usuario);
+                    return View("Index");
+                }
+                _sessaoDoUsuario.CriarSessaoDoUsuario(usuario);
                _cadrastro.Cadrastar(usuario);
                return RedirectToAction("Index", "Home");
 

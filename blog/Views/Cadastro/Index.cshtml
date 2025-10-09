@@ -5,6 +5,23 @@
     Layout = "~/Views/Shared/_LayoutCadrastro.cshtml";
 }
 
+@if (TempData["MensagemErro"] != null)
+{
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+        <div class="toast show toast-shor" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Ops, algo deu errado!</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body">
+                @TempData["MensagemErro"]
+            </div>
+        </div>
+    </div>
+}
+
 <div class="container  d-flex justify-content-center align-items-center min-vh-100 bg-light" id="main" >
     <div class="card shadow-lg border-0 rounded-4" style="max-width: 480px; width: 100%;">
         <div class="card-body p-5">

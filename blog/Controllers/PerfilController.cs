@@ -1,9 +1,10 @@
 ﻿using blog.Data;
+using blog.filter;
+using blog.Helper;
 using blog.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using blog.Helper;
 
 namespace blog.Controllers
 {
@@ -18,6 +19,8 @@ namespace blog.Controllers
             _context = context; 
             _sessaoDoUsuario = sessaoDoUsuario;
         }
+
+        [PagiSomenteAdm]
         public IActionResult Index()
         {
             var posts = _context.Post.ToList();
@@ -62,16 +65,20 @@ namespace blog.Controllers
             };
             return View(perfilPostModel);
         }
+        [PagiSomenteAdm]
         public IActionResult Postar()
         {
             return View();
         }
+
+        [PagiSomenteAdm]
         public IActionResult Editar()
         {
             var perfil = _context.Perfil.Find(1);
             return View(perfil);
         }
 
+        [PagiSomenteAdm]
         [HttpPost]
         public async Task<IActionResult> EnviarPerfil(perfilModel perfil, IFormFile arquivo)
         {
@@ -106,6 +113,7 @@ namespace blog.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["MensagemSucesso"] = "Post feito com sucesso";
             return RedirectToAction("Index", "Perfil");
         }
 
@@ -120,6 +128,7 @@ namespace blog.Controllers
             return File(perfil.FotoDePerfil, perfil.ContentType);
         }
 
+        [PagiSomenteAdm]
         [HttpPost]
         public async Task<IActionResult> Enviar(PostModel post, IFormFile arquivo)
         {
@@ -141,6 +150,7 @@ namespace blog.Controllers
             }
 
             ModelState.AddModelError("", "Selecione uma imagem válida.");
+            TempData["MensagemSucesso"] = "Poste feito com sucesso";
             return RedirectToAction("Index", "Home");
         }
 
