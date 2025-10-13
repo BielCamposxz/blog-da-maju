@@ -141,3 +141,4 @@ C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\scope
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutLogin.cshtml.rz.scp.css
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutBloqueio.cshtml.rz.scp.css
+C:\Users\figue\cursos\programador-tech\projetos\blog\blog\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css

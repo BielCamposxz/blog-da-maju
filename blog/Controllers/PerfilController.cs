@@ -113,7 +113,7 @@ namespace blog.Controllers
             }
 
             await _context.SaveChangesAsync();
-            TempData["MensagemSucesso"] = "Post feito com sucesso";
+            TempData["MensagemSucesso"] = "perfil editado com sucesso";
             return RedirectToAction("Index", "Perfil");
         }
 

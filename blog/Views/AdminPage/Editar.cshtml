@@ -1,0 +1,35 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Editar Usuario";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1 class="text-center">Editar Usuario</h1>
+
+<form asp-action="Editar" asp-controller="AdminPage" method="post">
+    <input type="hidden" asp-for="Id"/>
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="Nome" asp-for="Nome">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+    <div class="mb-3">
+        <label for="Login" class="form-label">Login</label>
+        <input type="text" class="form-control" id="Login" asp-for="Login">
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="Email" asp-for="Email">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="mb-3">
+        <label for="Senha" class="form-label">Senha</label>
+        <input type="text" class="form-control" id="Senha" asp-for="Senha">
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+ 
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-segundary" role="button" asp-route-id="@Model.Id" asp-controller="AdminPage" asp-action="Index">Voltar</a>
+
+</form>

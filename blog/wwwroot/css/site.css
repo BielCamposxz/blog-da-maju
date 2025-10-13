@@ -740,3 +740,122 @@ html {
     color: red;
     margin-left: 5px;
 }
+
+.hover-admin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 120, 150, 0.4);
+    filter: brightness(1.1);
+}
+
+.navbar-custom {
+    background: var(--fundo-claro);
+    color: var(--texto-escuro);
+    transition: all 0.4s ease;
+}
+
+    .navbar-custom a.nav-link,
+    .navbar-custom .dropdown-item {
+        color: var(--texto-escuro);
+    }
+
+    .navbar-custom .navbar-brand {
+        color: var(--rosa-vivo);
+    }
+
+    .navbar-custom.scrolled {
+        background: var(--fundo-claro);
+        color: var(--texto-escuro);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+        .navbar-custom.scrolled a.nav-link,
+        .navbar-custom.scrolled .dropdown-item {
+            color: var(--texto-escuro);
+        }
+
+        .navbar-custom.scrolled .navbar-brand {
+            color: var(--rosa-vivo);
+        }
+
+.footer-maju {
+  background: linear-gradient(135deg, #fde6ef 0%, #fff6fa 100%);
+  color: #4b2e38;
+  font-family: 'Poppins', sans-serif;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+}
+
+.text-primary-maju {
+    color: #d63384 !important; /* rosa forte e elegante */
+    font-family: 'Playfair Display', serif;
+}
+
+.background-shape {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, #ffb6c1 30%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 0;
+}
+
+.footer-maju .container {
+  z-index: 1;
+  position: relative;
+}
+
+.footer-maju .social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-maju .social-icon:hover {
+  transform: scale(1.2);
+  color: #d63384 !important;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #ff4b5c, #ff758c);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+    .logout-btn:hover {
+        background: linear-gradient(135deg, #ff3344, #ff5f7e);
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 6px 15px rgba(255, 90, 115, 0.4);
+    }
+
+    .logout-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(255, 90, 115, 0.3);
+    }
+
+.navbar-brand {
+    color: var(--rosa-vivo) !important;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
+
+/* Transição suave para dropdowns */
+.dropdown-menu {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Sombras sutis nos itens do dropdown */
+.dropdown-item:hover {
+    background-color: #ffe6eb;
+    color: #d6336c !important;
+}
+
+/* Ícones dentro dos botões e dropdowns */
+.bi {
+    transition: transform 0.2s;
+}
+
+.dropdown-item:hover .bi {
+    transform: scale(1.2);
+}

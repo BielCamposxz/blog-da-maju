@@ -19,7 +19,7 @@ namespace blog.repositorios.Cadastro
                 return "Email já cadastrado, tente outro";
             }
 
-            if((_context.Usuario.FirstOrDefault(user => user.Login == usuario.Login) != null) != null)
+            if(_context.Usuario.FirstOrDefault(user => user.Login == usuario.Login) != null)
             {
                 return "Login já cadastrado, tente outro";
             }

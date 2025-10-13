@@ -14,6 +14,7 @@ namespace blog.Models
         public string Login { get; set; }
 
         [Required(ErrorMessage = "digite um valor valido")]
+        [EmailAddress(ErrorMessage = "digite um valor valido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "digite um valor valido")]

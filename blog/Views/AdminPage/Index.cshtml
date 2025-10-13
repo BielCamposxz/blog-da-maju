@@ -1,0 +1,85 @@
+﻿@model List<UsuarioModel>
+
+@{
+    ViewData["Title"] = "AdminPage";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="text-center">Pagina de administrador</h1>
+
+
+@if (TempData["MensagemSucesso"] != null)
+{
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+        <div class="toast show toast-shor" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Sucesso!</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body">
+                @TempData["MensagemSucesso"]
+            </div>
+        </div>
+    </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+        <div class="toast show toast-shor" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Ops, algo deu errado!</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body">
+                @TempData["MensagemErro"]
+            </div>
+        </div>
+    </div>
+}
+
+
+<table class="table" id="table-user">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Email</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Administrador</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (UsuarioModel usuario in Model)
+{
+            <tr>
+                <th scope="row">@usuario.Id</th>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Login</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.Senha</td>
+                @if(usuario.isAdmin == true) {
+                    <td>Sim</td>
+                } 
+                else 
+                {
+                    <td>Não</td>
+                }
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary" asp-route-id="@usuario.Id" asp-controller="AdminPage" asp-action="Editar">Editar</a>
+                        @if(usuario.isAdmin == false)
+                        {
+                            <a role="button" class="btn btn-danger" asp-route-id="@usuario.Id" asp-controller="AdminPage" asp-action="Excluir">Apagar</a>
+                        }
+                    </div>
+                </td>
+            </tr>
+}
+        </tbody>
+    </table>
